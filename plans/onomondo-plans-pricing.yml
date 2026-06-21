@@ -1,0 +1,158 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Onomondo
+providerId: onomondo
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- IoT
+- Connectivity
+- Cellular
+- SIM
+- Telecom
+- Plans
+description: >-
+  Onomondo prices IoT cellular connectivity on a usage-based, pay-as-you-go
+  model: you pay for data when a SIM transmits, with no active-SIM fee for SIMs
+  that send no data in a billing month. Data starts at EUR 0.0025/MB on the
+  paid packages. Packages (Sandbox/Free Trial, Pro, Fleet, Enterprise) gate
+  features such as API access, Traffic Monitor, Magic Mode SIMs, Signaling
+  Logs, Cloud Connectors, VPN/IPSec, and SSO/SAML. Exact package data rates and
+  any per-SIM monthly fees are quote-based and not reconciled in this artifact.
+notes: >-
+  Per-MB data rates, volume tiers, and any per-SIM monthly fees vary by package
+  and committed volume; verify current figures against the Onomondo pricing
+  page during reconciliation.
+sources:
+- https://onomondo.com/pricing/
+- https://docs.onomondo.com/
+plans:
+- id: onomondo-free-trial
+  name: Free Trial
+  type: free
+  description: >-
+    30-day evaluation of the platform with limited SIMs and test data.
+  entries:
+  - label: Trial SIMs
+    name: trial_sims
+    type: flat
+    metric: sims
+    limit: 5
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Test Data
+    name: trial_data
+    type: flat
+    metric: data
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (50 MB included)
+    userMultiplied: false
+  elements:
+  - name: 440+ Networks
+  - name: Platform Access
+- id: onomondo-sandbox
+  name: Sandbox
+  type: free
+  description: >-
+    Customized testing plan with all features, broad network access, free test
+    SIMs, and a monthly data credit.
+  entries:
+  - label: Test SIMs
+    name: sandbox_sims
+    type: flat
+    metric: sims
+    limit: 100
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: up to 100 free SIMs
+    userMultiplied: false
+  - label: Monthly Data Credit
+    name: sandbox_credit
+    type: flat
+    metric: credit
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: EUR 50 monthly data credit
+    userMultiplied: false
+  elements:
+  - name: 680+ Networks
+  - name: All Features (testing)
+- id: onomondo-pro
+  name: Pro
+  type: usage
+  description: >-
+    Scale fleets with global coverage across 680+ networks, full API access,
+    and Traffic Monitor.
+  entries:
+  - label: Data
+    name: pro_data
+    type: usage
+    metric: data
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: starts at EUR 0.0025/MB
+    userMultiplied: false
+  elements:
+  - name: API Access
+  - name: Traffic Monitor
+  - name: 680+ Networks
+- id: onomondo-fleet
+  name: Fleet
+  type: usage
+  description: >-
+    Optimize device cost and performance with advanced features such as Magic
+    Mode SIMs and Signaling Logs. Marketed as the most popular package.
+  entries:
+  - label: Data
+    name: fleet_data
+    type: usage
+    metric: data
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: starts at EUR 0.0025/MB
+    userMultiplied: false
+  elements:
+  - name: Magic Mode SIMs
+  - name: Signaling Logs
+  - name: Traffic Monitor
+  - name: API Access
+- id: onomondo-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Flexible packages for complex solutions with VPN & IPSec encryption, Cloud
+    Connectors, and SSO/SAML. Negotiated volume terms; contact Onomondo sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: VPN & IPSec Encryption
+  - name: Cloud Connectors
+  - name: SSO / SAML
+  - name: Custom Volume Pricing
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

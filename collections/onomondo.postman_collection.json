@@ -1,0 +1,291 @@
+{
+  "info": {
+    "name": "Onomondo API",
+    "description": "HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Manage SIMs, usage, SMS, network lists, webhooks, connectors, and tags. Bearer API-key auth via the Authorization header; base URL https://api.onomondo.com.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{apiKey}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.onomondo.com" },
+    { "key": "sim_id", "value": "" },
+    { "key": "tag_id", "value": "" },
+    { "key": "webhook_id", "value": "" },
+    { "key": "network_whitelist_name", "value": "" },
+    { "key": "connector_name", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "SIMs",
+      "item": [
+        {
+          "name": "Retrieve information for all SIMs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/sims", "host": ["{{baseUrl}}"], "path": ["sims"] }
+          }
+        },
+        {
+          "name": "Find SIMs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/sims/find?query=", "host": ["{{baseUrl}}"], "path": ["sims", "find"], "query": [ { "key": "query", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Retrieve a specific SIM",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/sims/{{sim_id}}", "host": ["{{baseUrl}}"], "path": ["sims", "{{sim_id}}"] }
+          }
+        },
+        {
+          "name": "Update a SIM",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"label\": \"\",\n  \"activated\": true,\n  \"network_whitelist\": null,\n  \"imei_lock\": null,\n  \"connector\": null,\n  \"data_limit\": { \"total\": 0, \"type\": \"\", \"alert_threshold\": 0 },\n  \"technologies\": { \"sms\": true, \"2g_3g\": true, \"4g\": true },\n  \"tags\": []\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/sims/{{sim_id}}", "host": ["{{baseUrl}}"], "path": ["sims", "{{sim_id}}"] }
+          }
+        },
+        {
+          "name": "Update multiple SIMs",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "[]", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/sims/bulk", "host": ["{{baseUrl}}"], "path": ["sims", "bulk"] }
+          }
+        },
+        {
+          "name": "Add a Tag to a SIM",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/sims/{{sim_id}}/tags/{{tag_id}}", "host": ["{{baseUrl}}"], "path": ["sims", "{{sim_id}}", "tags", "{{tag_id}}"] }
+          }
+        },
+        {
+          "name": "Remove a Tag from a SIM",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/sims/{{sim_id}}/tags/{{tag_id}}", "host": ["{{baseUrl}}"], "path": ["sims", "{{sim_id}}", "tags", "{{tag_id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Usage",
+      "item": [
+        {
+          "name": "Retrieve usage for all SIMs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/usage", "host": ["{{baseUrl}}"], "path": ["usage"] }
+          }
+        },
+        {
+          "name": "Retrieve usage for a specific SIM",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/usage/{{sim_id}}", "host": ["{{baseUrl}}"], "path": ["usage", "{{sim_id}}"] }
+          }
+        },
+        {
+          "name": "Retrieve total usage by Tag",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/usage/tag-total/{{tag_id}}", "host": ["{{baseUrl}}"], "path": ["usage", "tag-total", "{{tag_id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SMS",
+      "item": [
+        {
+          "name": "Retrieve SMS usage for all SIMs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/sms/usage/", "host": ["{{baseUrl}}"], "path": ["sms", "usage", ""] }
+          }
+        },
+        {
+          "name": "Retrieve SMS usage for a specific SIM",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/sms/usage/{{sim_id}}", "host": ["{{baseUrl}}"], "path": ["sms", "usage", "{{sim_id}}"] }
+          }
+        },
+        {
+          "name": "Send SMS to a device",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"from\": \"\",\n  \"text\": \"\",\n  \"type\": \"text\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/sms/{{sim_id}}", "host": ["{{baseUrl}}"], "path": ["sms", "{{sim_id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Network Lists",
+      "item": [
+        {
+          "name": "Retrieve all Network Lists",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/network-whitelists", "host": ["{{baseUrl}}"], "path": ["network-whitelists"] }
+          }
+        },
+        {
+          "name": "Create a Network List",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"\",\n  \"tags\": [],\n  \"networks\": [ { \"mcc\": \"\", \"mnc\": \"\" } ]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/network-whitelists", "host": ["{{baseUrl}}"], "path": ["network-whitelists"] }
+          }
+        },
+        {
+          "name": "Retrieve a specific Network List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/network-whitelists/{{network_whitelist_name}}", "host": ["{{baseUrl}}"], "path": ["network-whitelists", "{{network_whitelist_name}}"] }
+          }
+        },
+        {
+          "name": "Update a Network List",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"tags\": [],\n  \"networks\": [ { \"mcc\": \"\", \"mnc\": \"\" } ]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/network-whitelists/{{network_whitelist_name}}", "host": ["{{baseUrl}}"], "path": ["network-whitelists", "{{network_whitelist_name}}"] }
+          }
+        },
+        {
+          "name": "Delete a Network List",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/network-whitelists/{{network_whitelist_name}}", "host": ["{{baseUrl}}"], "path": ["network-whitelists", "{{network_whitelist_name}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "Retrieve all webhooks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks", "host": ["{{baseUrl}}"], "path": ["webhooks"] }
+          }
+        },
+        {
+          "name": "Create a webhook",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"url\": \"https://\",\n  \"active\": true,\n  \"label\": null,\n  \"tags\": [],\n  \"exclude_types\": []\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/webhooks", "host": ["{{baseUrl}}"], "path": ["webhooks"] }
+          }
+        },
+        {
+          "name": "Retrieve a specific webhook",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks/{{webhook_id}}", "host": ["{{baseUrl}}"], "path": ["webhooks", "{{webhook_id}}"] }
+          }
+        },
+        {
+          "name": "Update a webhook",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"active\": true\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/webhooks/{{webhook_id}}", "host": ["{{baseUrl}}"], "path": ["webhooks", "{{webhook_id}}"] }
+          }
+        },
+        {
+          "name": "Delete a webhook",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks/{{webhook_id}}", "host": ["{{baseUrl}}"], "path": ["webhooks", "{{webhook_id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Connectors",
+      "item": [
+        {
+          "name": "Retrieve all Connectors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/connectors", "host": ["{{baseUrl}}"], "path": ["connectors"] }
+          }
+        },
+        {
+          "name": "Create a Connector",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"\",\n  \"type\": \"https\",\n  \"tags\": [],\n  \"passthrough\": [],\n  \"options\": {}\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/connectors", "host": ["{{baseUrl}}"], "path": ["connectors"] }
+          }
+        },
+        {
+          "name": "Update a Connector",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"options\": {}\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/connectors/{{connector_name}}", "host": ["{{baseUrl}}"], "path": ["connectors", "{{connector_name}}"] }
+          }
+        },
+        {
+          "name": "Delete a Connector",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/connectors/{{connector_name}}", "host": ["{{baseUrl}}"], "path": ["connectors", "{{connector_name}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tags",
+      "item": [
+        {
+          "name": "Search Tags",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/tags/search/tags", "host": ["{{baseUrl}}"], "path": ["tags", "search", "tags"] }
+          }
+        }
+      ]
+    }
+  ]
+}

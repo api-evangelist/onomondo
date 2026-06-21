@@ -1,0 +1,247 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onomondo API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{apiKey}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SIMs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve information for all SIMs", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/sims" },
+          "docs": "Returns information for all SIMs connected to the organization."
+        },
+        {
+          "info": { "name": "Find SIMs", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/sims/find?query=" },
+          "docs": "Retrieves a list of SIMs filtered by partial SIM ID, label, or exact ICCID match."
+        },
+        {
+          "info": { "name": "Retrieve a specific SIM", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/sims/{{sim_id}}" },
+          "docs": "Retrieve information for a specific SIM."
+        },
+        {
+          "info": { "name": "Update a SIM", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/sims/{{sim_id}}",
+            "body": { "type": "json", "data": "{\n  \"label\": \"\",\n  \"activated\": true,\n  \"network_whitelist\": null,\n  \"imei_lock\": null,\n  \"connector\": null,\n  \"data_limit\": { \"total\": 0, \"type\": \"\", \"alert_threshold\": 0 },\n  \"technologies\": { \"sms\": true, \"2g_3g\": true, \"4g\": true },\n  \"tags\": []\n}" }
+          },
+          "docs": "Updates configurable parameters for the specified SIM."
+        },
+        {
+          "info": { "name": "Update multiple SIMs", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/sims/bulk",
+            "body": { "type": "json", "data": "[]" }
+          },
+          "docs": "Updates configuration parameters for multiple SIMs (max 20 per call)."
+        },
+        {
+          "info": { "name": "Add a Tag to a SIM", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.onomondo.com/sims/{{sim_id}}/tags/{{tag_id}}" },
+          "docs": "Adds a Tag to a SIM."
+        },
+        {
+          "info": { "name": "Remove a Tag from a SIM", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.onomondo.com/sims/{{sim_id}}/tags/{{tag_id}}" },
+          "docs": "Removes a Tag from a SIM."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve usage for all SIMs", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/usage" },
+          "docs": "Retrieves all usage associated to all SIMs connected to the organization."
+        },
+        {
+          "info": { "name": "Retrieve usage for a specific SIM", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/usage/{{sim_id}}" },
+          "docs": "Fetches usage data for an individual SIM."
+        },
+        {
+          "info": { "name": "Retrieve total usage by Tag", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/usage/tag-total/{{tag_id}}" },
+          "docs": "Retrieves aggregated usage for all SIMs associated with the Tag."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve SMS usage for all SIMs", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/sms/usage/" },
+          "docs": "Retrieve SMS usage for all SIMs."
+        },
+        {
+          "info": { "name": "Retrieve SMS usage for a specific SIM", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/sms/usage/{{sim_id}}" },
+          "docs": "Retrieve SMS usage for a specific SIM."
+        },
+        {
+          "info": { "name": "Send SMS to a device", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.onomondo.com/sms/{{sim_id}}",
+            "body": { "type": "json", "data": "{\n  \"from\": \"\",\n  \"text\": \"\",\n  \"type\": \"text\"\n}" }
+          },
+          "docs": "Send an SMS to a device."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Network Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve all Network Lists", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/network-whitelists" },
+          "docs": "Retrieves a list of all Network Lists connected to the organization."
+        },
+        {
+          "info": { "name": "Create a Network List", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.onomondo.com/network-whitelists",
+            "body": { "type": "json", "data": "{\n  \"name\": \"\",\n  \"tags\": [],\n  \"networks\": [ { \"mcc\": \"\", \"mnc\": \"\" } ]\n}" }
+          },
+          "docs": "Creates a new Network List for the account."
+        },
+        {
+          "info": { "name": "Retrieve a specific Network List", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/network-whitelists/{{network_whitelist_name}}" },
+          "docs": "Fetches a specific Network List by name."
+        },
+        {
+          "info": { "name": "Update a Network List", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/network-whitelists/{{network_whitelist_name}}",
+            "body": { "type": "json", "data": "{\n  \"tags\": [],\n  \"networks\": [ { \"mcc\": \"\", \"mnc\": \"\" } ]\n}" }
+          },
+          "docs": "Modifies an existing Network List."
+        },
+        {
+          "info": { "name": "Delete a Network List", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.onomondo.com/network-whitelists/{{network_whitelist_name}}" },
+          "docs": "Removes a Network List (requires prior removal of all SIM mappings)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve all webhooks", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/webhooks" },
+          "docs": "Retrieve all registered webhooks."
+        },
+        {
+          "info": { "name": "Create a webhook", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.onomondo.com/webhooks",
+            "body": { "type": "json", "data": "{\n  \"url\": \"https://\",\n  \"active\": true,\n  \"label\": null,\n  \"tags\": [],\n  \"exclude_types\": []\n}" }
+          },
+          "docs": "Add a new webhook."
+        },
+        {
+          "info": { "name": "Retrieve a specific webhook", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/webhooks/{{webhook_id}}" },
+          "docs": "Retrieve a single webhook by ID."
+        },
+        {
+          "info": { "name": "Update a webhook", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/webhooks/{{webhook_id}}",
+            "body": { "type": "json", "data": "{\n  \"active\": true\n}" }
+          },
+          "docs": "Modify an existing webhook."
+        },
+        {
+          "info": { "name": "Delete a webhook", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.onomondo.com/webhooks/{{webhook_id}}" },
+          "docs": "Remove a webhook."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve all Connectors", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/connectors" },
+          "docs": "Returns information for all registered Connectors (Enterprise package)."
+        },
+        {
+          "info": { "name": "Create a Connector", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.onomondo.com/connectors",
+            "body": { "type": "json", "data": "{\n  \"name\": \"\",\n  \"type\": \"https\",\n  \"tags\": [],\n  \"passthrough\": [],\n  \"options\": {}\n}" }
+          },
+          "docs": "Creates a new Connector."
+        },
+        {
+          "info": { "name": "Update a Connector", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/connectors/{{connector_name}}",
+            "body": { "type": "json", "data": "{\n  \"options\": {}\n}" }
+          },
+          "docs": "Updates an existing Connector's settings."
+        },
+        {
+          "info": { "name": "Delete a Connector", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.onomondo.com/connectors/{{connector_name}}" },
+          "docs": "Removes a Connector (all mappings must be removed first)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Search Tags", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.onomondo.com/tags/search/tags" },
+          "docs": "Returns Tags for the organization. Tags are created and updated in the web app."
+        }
+      ]
+    }
+  ]
+}

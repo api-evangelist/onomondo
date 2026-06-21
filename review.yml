@@ -1,0 +1,91 @@
+aid: onomondo
+name: Onomondo
+review:
+  question: Does Onomondo expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Onomondo's event surface is delivered via webhooks (HTTP POST callbacks),
+    not a streaming protocol. Per API Evangelist scope, webhook callbacks are
+    modeled in the OpenAPI/REST description and webhook documentation rather
+    than as an AsyncAPI streaming document. No SSE or WebSocket stream is
+    documented, so no AsyncAPI document was authored.
+findings:
+  summary: |
+    Onomondo does not publish a documented public WebSocket API. The Onomondo
+    platform exposes a REST (HTTPS) API at https://api.onomondo.com using
+    Bearer API-key authentication for managing SIMs, usage, SMS, network
+    lists, webhooks, connectors, and tags. Near-real-time events about a SIM
+    fleet (usage, network registration/deregistration/authentication, SMS,
+    location, cost-alert) are delivered through outbound webhooks - HTTP POST
+    callbacks to a customer-supplied HTTPS URL - not via a WebSocket or SSE
+    stream. The Traffic Monitor capability is delivered through a CLI tool and
+    platform UI, not a documented public bidirectional socket API.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.onomondo.com
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP POST event callbacks to a customer HTTPS endpoint. Not a client-consumed streaming socket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Onomondo API reference, webhooks reference, or product pages as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.onomondo.com/sims
+    - GET    https://api.onomondo.com/sims/find
+    - GET    https://api.onomondo.com/sims/{sim_id}
+    - PATCH  https://api.onomondo.com/sims/{sim_id}
+    - PATCH  https://api.onomondo.com/sims/bulk
+    - PUT    https://api.onomondo.com/sims/{sim_id}/tags/{tag_id}
+    - DELETE https://api.onomondo.com/sims/{sim_id}/tags/{tag_id}
+    - GET    https://api.onomondo.com/usage
+    - GET    https://api.onomondo.com/usage/{sim_id}
+    - GET    https://api.onomondo.com/usage/tag-total/{tag_id}
+    - GET    https://api.onomondo.com/sms/usage/
+    - GET    https://api.onomondo.com/sms/usage/{sim_id}
+    - POST   https://api.onomondo.com/sms/{sim_id}
+    - GET    https://api.onomondo.com/network-whitelists
+    - POST   https://api.onomondo.com/network-whitelists
+    - GET    https://api.onomondo.com/network-whitelists/{network_whitelist_name}
+    - PATCH  https://api.onomondo.com/network-whitelists/{network_whitelist_name}
+    - DELETE https://api.onomondo.com/network-whitelists/{network_whitelist_name}
+    - GET    https://api.onomondo.com/webhooks
+    - POST   https://api.onomondo.com/webhooks
+    - GET    https://api.onomondo.com/webhooks/{webhook_id}
+    - PATCH  https://api.onomondo.com/webhooks/{webhook_id}
+    - DELETE https://api.onomondo.com/webhooks/{webhook_id}
+    - GET    https://api.onomondo.com/connectors
+    - POST   https://api.onomondo.com/connectors
+    - PATCH  https://api.onomondo.com/connectors/{connector_name}
+    - DELETE https://api.onomondo.com/connectors/{connector_name}
+    - GET    https://api.onomondo.com/tags/search/tags
+sources:
+  - url: https://docs.onomondo.com/
+    type: APIReference
+    note: REST base URL https://api.onomondo.com; Authorization header API key; 600 calls/min; no WebSocket mentioned.
+  - url: https://docs.onomondo.com/readme/webhooks
+    type: Documentation
+    note: Events delivered as outbound HTTP POST webhooks, not a streaming socket.
+  - url: https://docs.onomondo.com/webhooks-reference
+    type: Documentation
+    note: Webhook event payload reference; HTTP POST callbacks.
+  - url: https://docs.onomondo.com/traffic-monitor-cli
+    type: Documentation
+    note: Traffic Monitor delivered via CLI tool and UI, not a documented public WebSocket API.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE streaming protocol surface exists. The event surface is
+    outbound webhooks, which is represented through the REST/OpenAPI and webhook
+    documentation. No AsyncAPI document was authored because there is no
+    documented streaming transport to model.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

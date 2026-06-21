@@ -1,0 +1,91 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Onomondo
+providerId: onomondo
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- IoT
+- Connectivity
+- Cellular
+- SIM
+- Telecom
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Onomondo IoT connectivity spend. Onomondo bills usage-based
+  for cellular data transmitted by SIMs (starting at EUR 0.0025/MB on paid
+  packages), with no active-SIM fee for SIMs that send no data in a month. SMS
+  is metered per message. Package tier (Sandbox/Pro/Fleet/Enterprise) gates
+  feature access rather than acting as a flat platform fee. Exact per-MB rates
+  and any per-SIM charges are quote-based and not reconciled here.
+notes: >-
+  Per-MB data rates and any per-SIM monthly fees vary by package and committed
+  volume; verify against the Onomondo pricing page during reconciliation.
+sources:
+- https://onomondo.com/pricing/
+- https://docs.onomondo.com/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Onomondo
+serviceCategory: IoT and Connectivity
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: EUR
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Onomondo Connectivity
+  ServiceCategory: IoT and Connectivity
+  ProviderName: Onomondo
+  PublisherName: Onomondo
+  InvoiceIssuerName: Onomondo
+  BillingCurrency: EUR
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: data_megabytes
+  description: Cellular data transmitted by SIMs, billed per MB (starting at EUR 0.0025/MB).
+  unit: megabytes
+  aggregation: sum
+  dimensions:
+  - account
+  - sim
+  - tag
+- name: sms_messages
+  description: SMS messages sent to or from devices, metered per message.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+  - sim
+- name: active_sims
+  description: SIMs that transmitted data in the billing month (basis for any active-SIM charge).
+  unit: sims
+  aggregation: count
+  dimensions:
+  - account
+  - tag
+principles:
+- name: Visibility
+  description: Pull usage via the Usage API (per SIM and per Tag) and Traffic Monitor; inspect per-SIM and per-fleet data burn.
+- name: Allocation
+  description: Tag SIMs by device type, customer, or cost center; aggregate usage by Tag for chargeback.
+- name: Optimization
+  description: Set per-SIM data limits and cost-alert webhooks; use Network Lists to avoid expensive roaming; deactivate idle SIMs to avoid any active-SIM fees.
+- name: Accountability
+  description: Assign owners per Tag/fleet; review monthly data spend against budget and react to cost-alert events.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

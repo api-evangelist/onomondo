@@ -1,0 +1,57 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Onomondo
+providerId: onomondo
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- IoT
+- Connectivity
+- Cellular
+- SIM
+- Telecom
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Onomondo API enforces a documented call rate limit of 600 calls per
+  minute (one every 0.1 seconds). Remaining capacity is exposed via response
+  headers (x-ratelimit-limit, x-ratelimit-remaining, x-ratelimit-reset).
+  Responses are capped at a maximum of 1000 objects, with per-endpoint default
+  limits and offset/next_page pagination for retrieving additional objects.
+notes: >-
+  Rate-limit value and response-object caps confirmed from the public API
+  reference; recheck on reconciliation as the provider may adjust limits or add
+  endpoint-specific quotas.
+sources:
+- https://docs.onomondo.com/
+responseCodes:
+  throttled: 429
+limits:
+- name: API Calls Per Minute
+  scope: api-key
+  metric: requests
+  limit: 600
+  notes: One call every 0.1 seconds across the API.
+- name: Max Objects Per Response
+  scope: request
+  metric: objects
+  limit: 1000
+  notes: Use limit/offset or next_page pagination to retrieve more.
+headers:
+- name: x-ratelimit-limit
+  description: Maximum calls permitted in the current period.
+- name: x-ratelimit-remaining
+  description: Calls remaining in the current period.
+- name: x-ratelimit-reset
+  description: Unix timestamp at which the rate-limit period resets.
+policies:
+- name: Pagination
+  description: Endpoints default to capped page sizes; use limit, offset, and next_page to page through results.
+- name: Backoff Strategy
+  description: Clients should pace requests under 600/min, watch x-ratelimit-remaining, and back off when a 429 is returned.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

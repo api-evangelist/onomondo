@@ -1,0 +1,130 @@
+aid: onomondo
+url: https://raw.githubusercontent.com/api-evangelist/onomondo/refs/heads/main/apis.yml
+name: Onomondo
+kind: company
+description: Onomondo is a global IoT cellular-connectivity platform that connects
+  devices to 680+ networks across 180+ countries using a single core network. The
+  Onomondo API (https://api.onomondo.com) provides programmatic management of SIMs,
+  data usage, network lists, SMS, webhooks, connectors, and tags with Bearer API-key
+  authentication.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- IoT
+- Connectivity
+- Cellular
+- SIM
+- Telecom
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: onomondo:onomondo-sims-api
+  name: Onomondo SIMs API
+  tags:
+  - SIM
+  - IoT
+  - Fleet Management
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.onomondo.com/readme/sims
+  baseURL: https://api.onomondo.com
+  properties:
+  - url: https://docs.onomondo.com/readme/sims
+    type: Documentation
+  - url: https://docs.onomondo.com/
+    type: APIReference
+  - url: openapi/onomondo-openapi.yml
+    type: OpenAPI
+  description: List, find, retrieve, and update SIMs across an IoT fleet, including
+    activation state, data limits, network lists, IMEI lock, supported technologies,
+    and tag assignment (single and bulk).
+- aid: onomondo:onomondo-usage-traffic-api
+  name: Onomondo Usage & Traffic API
+  tags:
+  - Usage
+  - Traffic
+  - Metering
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.onomondo.com/readme/usage
+  baseURL: https://api.onomondo.com
+  properties:
+  - url: https://docs.onomondo.com/readme/usage
+    type: Documentation
+  - url: https://docs.onomondo.com/traffic-monitor-cli
+    type: Documentation
+  - url: openapi/onomondo-openapi.yml
+    type: OpenAPI
+  description: Retrieve data usage for all SIMs, an individual SIM, or aggregated by
+    Tag, plus SMS usage records. Complements the Traffic Monitor tooling for
+    real-time packet-level traffic inspection.
+- aid: onomondo:onomondo-networks-api
+  name: Onomondo Networks API
+  tags:
+  - Networks
+  - MCC
+  - MNC
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.onomondo.com/readme/network-whitelists
+  baseURL: https://api.onomondo.com
+  properties:
+  - url: https://docs.onomondo.com/readme/network-whitelists
+    type: Documentation
+  - url: openapi/onomondo-openapi.yml
+    type: OpenAPI
+  description: Create, retrieve, update, and delete Network Lists - named allow-lists
+    of MCC/MNC network entries with associated Tags that control which mobile
+    networks SIMs may attach to.
+- aid: onomondo:onomondo-webhooks-notifications-api
+  name: Onomondo Webhooks & Notifications API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.onomondo.com/readme/webhooks
+  baseURL: https://api.onomondo.com
+  properties:
+  - url: https://docs.onomondo.com/readme/webhooks
+    type: Documentation
+  - url: https://docs.onomondo.com/webhooks-reference
+    type: Documentation
+  - url: openapi/onomondo-openapi.yml
+    type: OpenAPI
+  description: Manage webhooks that deliver near-real-time SIM events (usage,
+    network registration/deregistration/authentication, SMS, location, and
+    cost-alert) as HTTP POST callbacks, with Tag-based filtering and event-type
+    exclusion.
+- aid: onomondo:onomondo-apps-connectors-api
+  name: Onomondo Apps & Connectors API
+  tags:
+  - Connectors
+  - Integrations
+  - Cloud
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.onomondo.com/readme/connectors
+  baseURL: https://api.onomondo.com
+  properties:
+  - url: https://docs.onomondo.com/readme/connectors
+    type: Documentation
+  - url: openapi/onomondo-openapi.yml
+    type: OpenAPI
+  description: Create, update, and delete Connectors (Apps) that forward device
+    traffic to cloud destinations such as HTTPS, TLS, Microsoft Azure IoT, and AWS
+    IoT Core, plus search organization Tags used to group SIMs.
+common:
+- type: GitHubOrganization
+  url: https://github.com/onomondo
+- type: LinkedIn
+  url: https://www.linkedin.com/company/onomondo
+- type: Website
+  url: https://onomondo.com/
+- type: Documentation
+  url: https://docs.onomondo.com/
+- type: Plans
+  url: plans/onomondo-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/onomondo-rate-limits.yml
+- type: FinOps
+  url: finops/onomondo-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
