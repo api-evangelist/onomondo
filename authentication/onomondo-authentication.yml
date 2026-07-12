@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/onomondo-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Organization-scoped API key supplied in the Authorization header. Generated in
+    the Onomondo platform and coupled to the organization under which it is created.
+  sources:
+  - openapi/onomondo-openapi.yml

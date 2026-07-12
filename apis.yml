@@ -111,6 +111,10 @@ apis:
     traffic to cloud destinations such as HTTPS, TLS, Microsoft Azure IoT, and AWS
     IoT Core, plus search organization Tags used to group SIMs.
 common:
+- type: DomainSecurity
+  url: security/onomondo-domain-security.yml
+- type: Authentication
+  url: authentication/onomondo-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/onomondo
 - type: LinkedIn
@@ -125,6 +129,8 @@ common:
   url: rate-limits/onomondo-rate-limits.yml
 - type: FinOps
   url: finops/onomondo-finops.yml
+- url: https://onomondo.com/blog/feed/
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
