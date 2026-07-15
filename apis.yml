@@ -111,6 +111,8 @@ apis:
     traffic to cloud destinations such as HTTPS, TLS, Microsoft Azure IoT, and AWS
     IoT Core, plus search organization Tags used to group SIMs.
 common:
+- type: AgenticAccess
+  url: agentic-access/onomondo-agentic-access.yml
 - type: DomainSecurity
   url: security/onomondo-domain-security.yml
 - type: Authentication
