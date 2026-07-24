@@ -1,0 +1,117 @@
+openapi: 3.0.1
+info:
+  title: Onomondo Connectors Network Lists API
+  description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.
+  termsOfService: https://onomondo.com/legal/
+  contact:
+    name: Onomondo Support
+    url: https://onomondo.com/contact/
+  version: '1.0'
+servers:
+- url: https://api.onomondo.com
+  description: Onomondo production API
+security:
+- apiKey: []
+tags:
+- name: Network Lists
+  description: Manage network allow-lists (whitelists) of MCC/MNC entries.
+paths:
+  /network-whitelists:
+    get:
+      operationId: listNetworkLists
+      tags:
+      - Network Lists
+      summary: Retrieve all Network Lists
+      responses:
+        '200':
+          description: A list of Network List objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkList'
+    post:
+      operationId: createNetworkList
+      tags:
+      - Network Lists
+      summary: Create a Network List
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkList'
+      responses:
+        '200':
+          description: Network List created.
+  /network-whitelists/{network_whitelist_name}:
+    parameters:
+    - name: network_whitelist_name
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getNetworkList
+      tags:
+      - Network Lists
+      summary: Retrieve a specific Network List
+      responses:
+        '200':
+          description: A Network List object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkList'
+    patch:
+      operationId: updateNetworkList
+      tags:
+      - Network Lists
+      summary: Update a Network List
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkList'
+      responses:
+        '200':
+          description: Network List updated.
+    delete:
+      operationId: deleteNetworkList
+      tags:
+      - Network Lists
+      summary: Delete a Network List
+      description: All SIM mappings must be removed before deletion.
+      responses:
+        '200':
+          description: Network List deleted.
+components:
+  schemas:
+    NetworkList:
+      type: object
+      properties:
+        name:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        networks:
+          type: array
+          items:
+            type: object
+            properties:
+              mcc:
+                type: string
+                description: Mobile Country Code.
+              mnc:
+                type: string
+                description: Mobile Network Code.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Organization-scoped API key supplied in the Authorization header. Generated in the Onomondo platform and coupled to the organization under which it is created.

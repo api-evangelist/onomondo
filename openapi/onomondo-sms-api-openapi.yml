@@ -1,0 +1,143 @@
+openapi: 3.0.1
+info:
+  title: Onomondo Connectors SMS API
+  description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.
+  termsOfService: https://onomondo.com/legal/
+  contact:
+    name: Onomondo Support
+    url: https://onomondo.com/contact/
+  version: '1.0'
+servers:
+- url: https://api.onomondo.com
+  description: Onomondo production API
+security:
+- apiKey: []
+tags:
+- name: SMS
+  description: Send SMS to devices and retrieve SMS usage.
+paths:
+  /sms/usage/:
+    get:
+      operationId: getSmsUsageAll
+      tags:
+      - SMS
+      summary: Retrieve SMS usage for all SIMs
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      - name: timestamp
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: order
+        in: query
+        schema:
+          type: string
+          enum:
+          - ASC
+          - DESC
+          default: DESC
+      responses:
+        '200':
+          description: SMS usage records.
+  /sms/usage/{sim_id}:
+    parameters:
+    - $ref: '#/components/parameters/SimId'
+    get:
+      operationId: getSmsUsageForSim
+      tags:
+      - SMS
+      summary: Retrieve SMS usage for a specific SIM
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      - name: timestamp
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: order
+        in: query
+        schema:
+          type: string
+          enum:
+          - ASC
+          - DESC
+          default: DESC
+      responses:
+        '200':
+          description: SMS usage records for the SIM.
+  /sms/{sim_id}:
+    parameters:
+    - $ref: '#/components/parameters/SimId'
+    post:
+      operationId: sendSms
+      tags:
+      - SMS
+      summary: Send SMS to a device
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSmsRequest'
+      responses:
+        '200':
+          description: SMS accepted for delivery.
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return (1-1000).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 1000
+    SimId:
+      name: sim_id
+      in: path
+      required: true
+      description: The Onomondo SIM identifier.
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      description: Number of objects to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    SendSmsRequest:
+      type: object
+      required:
+      - from
+      - text
+      properties:
+        from:
+          type: string
+          description: Numeric (0-15 digits) or alphanumeric (1-10 chars) sender.
+        text:
+          type: string
+          description: Message content or encoded data.
+        type:
+          type: string
+          enum:
+          - text
+          - binary
+          default: text
+        encoding:
+          type: string
+          enum:
+          - hex
+          - base64
+          description: Required when type is binary.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Organization-scoped API key supplied in the Authorization header. Generated in the Onomondo platform and coupled to the organization under which it is created.

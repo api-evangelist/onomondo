@@ -1,0 +1,129 @@
+openapi: 3.0.1
+info:
+  title: Onomondo Connectors Usage API
+  description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.
+  termsOfService: https://onomondo.com/legal/
+  contact:
+    name: Onomondo Support
+    url: https://onomondo.com/contact/
+  version: '1.0'
+servers:
+- url: https://api.onomondo.com
+  description: Onomondo production API
+security:
+- apiKey: []
+tags:
+- name: Usage
+  description: Retrieve data usage for SIMs and tags.
+paths:
+  /usage:
+    get:
+      operationId: getUsage
+      tags:
+      - Usage
+      summary: Retrieve usage for all SIMs
+      description: Retrieves all usage associated with all SIMs connected to the account/organization.
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      - name: filter
+        in: query
+        schema:
+          type: string
+      - name: group
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Usage records.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usage'
+  /usage/{sim_id}:
+    parameters:
+    - $ref: '#/components/parameters/SimId'
+    get:
+      operationId: getSimUsage
+      tags:
+      - Usage
+      summary: Retrieve usage for a specific SIM
+      responses:
+        '200':
+          description: Usage records for the SIM.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usage'
+  /usage/tag-total/{tag_id}:
+    parameters:
+    - $ref: '#/components/parameters/TagId'
+    get:
+      operationId: getTagTotalUsage
+      tags:
+      - Usage
+      summary: Retrieve total usage by Tag
+      description: Retrieves aggregated usage for all SIMs associated with the given Tag.
+      responses:
+        '200':
+          description: Aggregated usage for the Tag.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usage'
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return (1-1000).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 1000
+    Offset:
+      name: offset
+      in: query
+      description: Number of objects to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    TagId:
+      name: tag_id
+      in: path
+      required: true
+      description: The Tag identifier (UUID).
+      schema:
+        type: string
+    SimId:
+      name: sim_id
+      in: path
+      required: true
+      description: The Onomondo SIM identifier.
+      schema:
+        type: string
+  schemas:
+    Usage:
+      type: object
+      properties:
+        usage:
+          type: array
+          items:
+            type: object
+            properties:
+              sim_id:
+                type: string
+              bytes:
+                type: integer
+                description: Total bytes used.
+              timestamp:
+                type: string
+                format: date-time
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Organization-scoped API key supplied in the Authorization header. Generated in the Onomondo platform and coupled to the organization under which it is created.

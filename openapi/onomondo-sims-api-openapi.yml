@@ -1,0 +1,254 @@
+openapi: 3.0.1
+info:
+  title: Onomondo Connectors SIMs API
+  description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.
+  termsOfService: https://onomondo.com/legal/
+  contact:
+    name: Onomondo Support
+    url: https://onomondo.com/contact/
+  version: '1.0'
+servers:
+- url: https://api.onomondo.com
+  description: Onomondo production API
+security:
+- apiKey: []
+tags:
+- name: SIMs
+  description: Manage and inspect SIMs in your fleet.
+paths:
+  /sims:
+    get:
+      operationId: listSims
+      tags:
+      - SIMs
+      summary: Retrieve information for all SIMs
+      description: Returns information for all SIMs connected to the organization.
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A list of SIM objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sim'
+  /sims/find:
+    get:
+      operationId: findSims
+      tags:
+      - SIMs
+      summary: Find SIMs
+      description: Retrieves a list of SIMs filtered by partial SIM ID, label, or exact ICCID match.
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of matching SIM objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sim'
+  /sims/bulk:
+    patch:
+      operationId: updateSimsBulk
+      tags:
+      - SIMs
+      summary: Update multiple SIMs
+      description: Updates configuration parameters for multiple SIMs (maximum 20 per call).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              maxItems: 20
+              items:
+                $ref: '#/components/schemas/SimUpdate'
+      responses:
+        '200':
+          description: SIMs updated.
+  /sims/{sim_id}:
+    parameters:
+    - $ref: '#/components/parameters/SimId'
+    get:
+      operationId: getSim
+      tags:
+      - SIMs
+      summary: Retrieve information for a specific SIM
+      responses:
+        '200':
+          description: A SIM object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sim'
+        '404':
+          description: SIM not found.
+    patch:
+      operationId: updateSim
+      tags:
+      - SIMs
+      summary: Update a SIM
+      description: Updates configurable parameters for the specified SIM.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimUpdate'
+      responses:
+        '200':
+          description: SIM updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sim'
+  /sims/{sim_id}/tags/{tag_id}:
+    parameters:
+    - $ref: '#/components/parameters/SimId'
+    - $ref: '#/components/parameters/TagId'
+    put:
+      operationId: addTagToSim
+      tags:
+      - SIMs
+      summary: Add a Tag to a SIM
+      responses:
+        '200':
+          description: Tag added to SIM.
+    delete:
+      operationId: removeTagFromSim
+      tags:
+      - SIMs
+      summary: Remove a Tag from a SIM
+      responses:
+        '200':
+          description: Tag removed from SIM.
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return (1-1000).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 1000
+    Offset:
+      name: offset
+      in: query
+      description: Number of objects to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    TagId:
+      name: tag_id
+      in: path
+      required: true
+      description: The Tag identifier (UUID).
+      schema:
+        type: string
+    SimId:
+      name: sim_id
+      in: path
+      required: true
+      description: The Onomondo SIM identifier.
+      schema:
+        type: string
+  schemas:
+    SimUpdate:
+      type: object
+      properties:
+        label:
+          type: string
+          nullable: true
+        network_whitelist:
+          type: string
+          nullable: true
+        imei_lock:
+          type: string
+          nullable: true
+        connector:
+          type: string
+          nullable: true
+        activated:
+          type: boolean
+        data_limit:
+          $ref: '#/components/schemas/DataLimit'
+        technologies:
+          $ref: '#/components/schemas/Technologies'
+        tags:
+          type: array
+          items:
+            type: string
+    Sim:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Onomondo SIM identifier.
+        iccid:
+          type: string
+          description: Integrated Circuit Card Identifier.
+        label:
+          type: string
+          nullable: true
+        activated:
+          type: boolean
+        network_whitelist:
+          type: string
+          nullable: true
+        imei_lock:
+          type: string
+          nullable: true
+        connector:
+          type: string
+          nullable: true
+        data_limit:
+          $ref: '#/components/schemas/DataLimit'
+        technologies:
+          $ref: '#/components/schemas/Technologies'
+        tags:
+          type: array
+          items:
+            type: string
+        location:
+          type: object
+          nullable: true
+          description: Last known network location of the SIM (read-only).
+    Technologies:
+      type: object
+      properties:
+        sms:
+          type: boolean
+        2g_3g:
+          type: boolean
+        4g:
+          type: boolean
+    DataLimit:
+      type: object
+      properties:
+        total:
+          type: number
+          description: Total data limit.
+        type:
+          type: string
+          description: Limit period type.
+        alert_threshold:
+          type: number
+          description: Threshold at which a cost/usage alert is triggered.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Organization-scoped API key supplied in the Authorization header. Generated in the Onomondo platform and coupled to the organization under which it is created.

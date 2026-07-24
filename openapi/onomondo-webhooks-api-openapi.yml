@@ -1,0 +1,134 @@
+openapi: 3.0.1
+info:
+  title: Onomondo Connectors Webhooks API
+  description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.
+  termsOfService: https://onomondo.com/legal/
+  contact:
+    name: Onomondo Support
+    url: https://onomondo.com/contact/
+  version: '1.0'
+servers:
+- url: https://api.onomondo.com
+  description: Onomondo production API
+security:
+- apiKey: []
+tags:
+- name: Webhooks
+  description: Subscribe to SIM events delivered as HTTP POST callbacks.
+paths:
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      tags:
+      - Webhooks
+      summary: Retrieve all webhooks
+      responses:
+        '200':
+          description: A list of webhook objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      operationId: createWebhook
+      tags:
+      - Webhooks
+      summary: Create a webhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+      responses:
+        '200':
+          description: Webhook created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+  /webhooks/{webhook_id}:
+    parameters:
+    - name: webhook_id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getWebhook
+      tags:
+      - Webhooks
+      summary: Retrieve a specific webhook
+      responses:
+        '200':
+          description: A webhook object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+    patch:
+      operationId: updateWebhook
+      tags:
+      - Webhooks
+      summary: Update a webhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+      responses:
+        '200':
+          description: Webhook updated.
+    delete:
+      operationId: deleteWebhook
+      tags:
+      - Webhooks
+      summary: Delete a webhook
+      responses:
+        '200':
+          description: Webhook deleted.
+components:
+  schemas:
+    Webhook:
+      type: object
+      required:
+      - url
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          description: HTTPS endpoint; must start with https://.
+        active:
+          type: boolean
+        label:
+          type: string
+          nullable: true
+        tags:
+          type: array
+          description: Tag IDs to filter on; empty array includes all tags.
+          items:
+            type: string
+        exclude_types:
+          type: array
+          description: Event types to exclude from delivery.
+          items:
+            type: string
+            enum:
+            - usage
+            - usage-sms
+            - network-registration
+            - network-deregistration
+            - network-authentication
+            - sms
+            - location
+            - cost-alert
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Organization-scoped API key supplied in the Authorization header. Generated in the Onomondo platform and coupled to the organization under which it is created.

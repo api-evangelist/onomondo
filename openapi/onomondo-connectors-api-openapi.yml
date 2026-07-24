@@ -1,0 +1,112 @@
+openapi: 3.0.1
+info:
+  title: Onomondo Connectors API
+  description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.
+  termsOfService: https://onomondo.com/legal/
+  contact:
+    name: Onomondo Support
+    url: https://onomondo.com/contact/
+  version: '1.0'
+servers:
+- url: https://api.onomondo.com
+  description: Onomondo production API
+security:
+- apiKey: []
+tags:
+- name: Connectors
+  description: Manage cloud connectors that forward device traffic.
+paths:
+  /connectors:
+    get:
+      operationId: listConnectors
+      tags:
+      - Connectors
+      summary: Retrieve all Connectors
+      description: Returns information for all registered Connectors (Enterprise package).
+      responses:
+        '200':
+          description: A list of Connector objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connector'
+    post:
+      operationId: createConnector
+      tags:
+      - Connectors
+      summary: Create a Connector
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connector'
+      responses:
+        '200':
+          description: Connector created.
+  /connectors/{connector_name}:
+    parameters:
+    - name: connector_name
+      in: path
+      required: true
+      schema:
+        type: string
+    patch:
+      operationId: updateConnector
+      tags:
+      - Connectors
+      summary: Update a Connector
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connector'
+      responses:
+        '200':
+          description: Connector updated.
+    delete:
+      operationId: deleteConnector
+      tags:
+      - Connectors
+      summary: Delete a Connector
+      description: All mappings to the Connector must be removed first.
+      responses:
+        '200':
+          description: Connector deleted.
+components:
+  schemas:
+    Connector:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          maxLength: 255
+        type:
+          type: string
+          enum:
+          - https
+          - tls
+          - microsoft_azure_iot
+          - aws_iot_core
+        tags:
+          type: array
+          items:
+            type: string
+            format: uuid
+        passthrough:
+          type: array
+          items:
+            type: string
+        options:
+          type: object
+          description: Connector-specific configuration.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Organization-scoped API key supplied in the Authorization header. Generated in the Onomondo platform and coupled to the organization under which it is created.
