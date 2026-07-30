@@ -7,7 +7,20 @@ description: Onomondo is a global IoT cellular-connectivity platform that connec
   Onomondo API (https://api.onomondo.com) provides programmatic management of SIMs,
   data usage, network lists, SMS, webhooks, connectors, and tags with Bearer API-key
   authentication.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/onomondo.png
 tags:
 - IoT
 - Connectivity
@@ -18,98 +31,188 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: onomondo:onomondo-sims-api
-  name: Onomondo SIMs API
-  tags:
-  - SIM
-  - IoT
-  - Fleet Management
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: onomondo:onomondo-connectors-api
+  name: Onomondo Connectors API
+  description: Manage cloud connectors that forward device traffic.
   humanURL: https://docs.onomondo.com/readme/sims
   baseURL: https://api.onomondo.com
-  properties:
-  - url: https://docs.onomondo.com/readme/sims
-    type: Documentation
-  - url: https://docs.onomondo.com/
-    type: APIReference
-  - url: openapi/onomondo-openapi.yml
-    type: OpenAPI
-  description: List, find, retrieve, and update SIMs across an IoT fleet, including
-    activation state, data limits, network lists, IMEI lock, supported technologies,
-    and tag assignment (single and bulk).
-- aid: onomondo:onomondo-usage-traffic-api
-  name: Onomondo Usage & Traffic API
-  tags:
-  - Usage
-  - Traffic
-  - Metering
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.onomondo.com/readme/usage
-  baseURL: https://api.onomondo.com
-  properties:
-  - url: https://docs.onomondo.com/readme/usage
-    type: Documentation
-  - url: https://docs.onomondo.com/traffic-monitor-cli
-    type: Documentation
-  - url: openapi/onomondo-openapi.yml
-    type: OpenAPI
-  description: Retrieve data usage for all SIMs, an individual SIM, or aggregated by
-    Tag, plus SMS usage records. Complements the Traffic Monitor tooling for
-    real-time packet-level traffic inspection.
-- aid: onomondo:onomondo-networks-api
-  name: Onomondo Networks API
-  tags:
-  - Networks
-  - MCC
-  - MNC
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.onomondo.com/readme/network-whitelists
-  baseURL: https://api.onomondo.com
-  properties:
-  - url: https://docs.onomondo.com/readme/network-whitelists
-    type: Documentation
-  - url: openapi/onomondo-openapi.yml
-    type: OpenAPI
-  description: Create, retrieve, update, and delete Network Lists - named allow-lists
-    of MCC/MNC network entries with associated Tags that control which mobile
-    networks SIMs may attach to.
-- aid: onomondo:onomondo-webhooks-notifications-api
-  name: Onomondo Webhooks & Notifications API
-  tags:
-  - Webhooks
-  - Events
-  - Notifications
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.onomondo.com/readme/webhooks
-  baseURL: https://api.onomondo.com
-  properties:
-  - url: https://docs.onomondo.com/readme/webhooks
-    type: Documentation
-  - url: https://docs.onomondo.com/webhooks-reference
-    type: Documentation
-  - url: openapi/onomondo-openapi.yml
-    type: OpenAPI
-  description: Manage webhooks that deliver near-real-time SIM events (usage,
-    network registration/deregistration/authentication, SMS, location, and
-    cost-alert) as HTTP POST callbacks, with Tag-based filtering and event-type
-    exclusion.
-- aid: onomondo:onomondo-apps-connectors-api
-  name: Onomondo Apps & Connectors API
   tags:
   - Connectors
-  - Integrations
-  - Cloud
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.onomondo.com/readme/connectors
-  baseURL: https://api.onomondo.com
   properties:
-  - url: https://docs.onomondo.com/readme/connectors
-    type: Documentation
-  - url: openapi/onomondo-openapi.yml
-    type: OpenAPI
-  description: Create, update, and delete Connectors (Apps) that forward device
-    traffic to cloud destinations such as HTTPS, TLS, Microsoft Azure IoT, and AWS
-    IoT Core, plus search organization Tags used to group SIMs.
+  - type: OpenAPI
+    url: openapi/onomondo-connectors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/sims
+  - type: APIReference
+    url: https://docs.onomondo.com/
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/usage
+  - type: Documentation
+    url: https://docs.onomondo.com/traffic-monitor-cli
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/network-whitelists
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/webhooks
+  - type: Documentation
+    url: https://docs.onomondo.com/webhooks-reference
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/connectors
+- aid: onomondo:onomondo-network-lists-api
+  name: Onomondo Network Lists API
+  description: Manage network allow-lists (whitelists) of MCC/MNC entries.
+  humanURL: https://docs.onomondo.com/readme/sims
+  baseURL: https://api.onomondo.com
+  tags:
+  - Network Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/onomondo-network-lists-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/sims
+  - type: APIReference
+    url: https://docs.onomondo.com/
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/usage
+  - type: Documentation
+    url: https://docs.onomondo.com/traffic-monitor-cli
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/network-whitelists
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/webhooks
+  - type: Documentation
+    url: https://docs.onomondo.com/webhooks-reference
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/connectors
+- aid: onomondo:onomondo-sims-api
+  name: Onomondo SIMs API
+  description: Manage and inspect SIMs in your fleet.
+  humanURL: https://docs.onomondo.com/readme/sims
+  baseURL: https://api.onomondo.com
+  tags:
+  - SIMs
+  properties:
+  - type: OpenAPI
+    url: openapi/onomondo-sims-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/sims
+  - type: APIReference
+    url: https://docs.onomondo.com/
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/usage
+  - type: Documentation
+    url: https://docs.onomondo.com/traffic-monitor-cli
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/network-whitelists
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/webhooks
+  - type: Documentation
+    url: https://docs.onomondo.com/webhooks-reference
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/connectors
+- aid: onomondo:onomondo-sms-api
+  name: Onomondo SMS API
+  description: Send SMS to devices and retrieve SMS usage.
+  humanURL: https://docs.onomondo.com/readme/sims
+  baseURL: https://api.onomondo.com
+  tags:
+  - SMS
+  properties:
+  - type: OpenAPI
+    url: openapi/onomondo-sms-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/sims
+  - type: APIReference
+    url: https://docs.onomondo.com/
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/usage
+  - type: Documentation
+    url: https://docs.onomondo.com/traffic-monitor-cli
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/network-whitelists
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/webhooks
+  - type: Documentation
+    url: https://docs.onomondo.com/webhooks-reference
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/connectors
+- aid: onomondo:onomondo-tags-api
+  name: Onomondo Tags API
+  description: Search organization tags used to group SIMs.
+  humanURL: https://docs.onomondo.com/readme/sims
+  baseURL: https://api.onomondo.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/onomondo-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/sims
+  - type: APIReference
+    url: https://docs.onomondo.com/
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/usage
+  - type: Documentation
+    url: https://docs.onomondo.com/traffic-monitor-cli
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/network-whitelists
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/webhooks
+  - type: Documentation
+    url: https://docs.onomondo.com/webhooks-reference
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/connectors
+- aid: onomondo:onomondo-usage-api
+  name: Onomondo Usage API
+  description: Retrieve data usage for SIMs and tags.
+  humanURL: https://docs.onomondo.com/readme/sims
+  baseURL: https://api.onomondo.com
+  tags:
+  - Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/onomondo-usage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/sims
+  - type: APIReference
+    url: https://docs.onomondo.com/
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/usage
+  - type: Documentation
+    url: https://docs.onomondo.com/traffic-monitor-cli
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/network-whitelists
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/webhooks
+  - type: Documentation
+    url: https://docs.onomondo.com/webhooks-reference
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/connectors
+- aid: onomondo:onomondo-webhooks-api
+  name: Onomondo Webhooks API
+  description: Subscribe to SIM events delivered as HTTP POST callbacks.
+  humanURL: https://docs.onomondo.com/readme/sims
+  baseURL: https://api.onomondo.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/onomondo-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/sims
+  - type: APIReference
+    url: https://docs.onomondo.com/
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/usage
+  - type: Documentation
+    url: https://docs.onomondo.com/traffic-monitor-cli
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/network-whitelists
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/webhooks
+  - type: Documentation
+    url: https://docs.onomondo.com/webhooks-reference
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/connectors
 common:
 - type: AgenticAccess
   url: agentic-access/onomondo-agentic-access.yml
