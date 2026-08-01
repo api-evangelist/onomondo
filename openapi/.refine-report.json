@@ -1,0 +1,26 @@
+{
+  "provider": "onomondo",
+  "sources": [
+    "onomondo-connectors-api-openapi.yml",
+    "onomondo-network-lists-api-openapi.yml",
+    "onomondo-sims-api-openapi.yml",
+    "onomondo-sms-api-openapi.yml",
+    "onomondo-tags-api-openapi.yml",
+    "onomondo-usage-api-openapi.yml",
+    "onomondo-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "onomondo-connectors-api-openapi.yml",
+    "onomondo-network-lists-api-openapi.yml",
+    "onomondo-sims-api-openapi.yml",
+    "onomondo-sms-api-openapi.yml",
+    "onomondo-tags-api-openapi.yml",
+    "onomondo-usage-api-openapi.yml",
+    "onomondo-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
