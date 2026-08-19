@@ -1,0 +1,389 @@
+{
+  "item": [
+    {
+      "id": "b1af1afe-ba78-4a82-8d6f-1faba9adf34e",
+      "name": "SMS",
+      "description": {
+        "content": "Send SMS to devices and retrieve SMS usage.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49f237bb-6d46-405d-be2a-8aece43389a7",
+          "name": "Retrieve SMS usage for all SIMs",
+          "request": {
+            "name": "Retrieve SMS usage for all SIMs",
+            "description": {},
+            "url": {
+              "path": [
+                "sms",
+                "usage",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "Maximum number of objects to return (1-1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of objects to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0ee3ef7-0c46-4634-a421-ad26c7be3928",
+              "name": "SMS usage records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "usage",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c93fec82-1563-4c85-9c6d-ebd66ae843f8",
+          "name": "Retrieve SMS usage for a specific SIM",
+          "request": {
+            "name": "Retrieve SMS usage for a specific SIM",
+            "description": {},
+            "url": {
+              "path": [
+                "sms",
+                "usage",
+                ":sim_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "Maximum number of objects to return (1-1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of objects to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sim_id",
+                  "description": "(Required) The Onomondo SIM identifier."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78577ac4-5be7-435a-83e6-8076c3c28389",
+              "name": "SMS usage records for the SIM.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "usage",
+                    ":sim_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sim_id",
+                      "description": "(Required) The Onomondo SIM identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "554a70a0-31d7-4d78-9256-a3b0d01830a2",
+          "name": "Send SMS to a device",
+          "request": {
+            "name": "Send SMS to a device",
+            "description": {},
+            "url": {
+              "path": [
+                "sms",
+                ":sim_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sim_id",
+                  "description": "(Required) The Onomondo SIM identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"text\": \"<string>\",\n  \"type\": \"text\",\n  \"encoding\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2344a9dc-7e6e-47ed-8319-9a10772c1459",
+              "name": "SMS accepted for delivery.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    ":sim_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sim_id",
+                      "description": "(Required) The Onomondo SIM identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<string>\",\n  \"text\": \"<string>\",\n  \"type\": \"text\",\n  \"encoding\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onomondo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ce2b57e1-9d44-4885-81b6-244655e410df",
+    "name": "Onomondo Connectors SMS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.\n\nContact Support:\n Name: Onomondo Support",
+      "type": "text/plain"
+    }
+  }
+}

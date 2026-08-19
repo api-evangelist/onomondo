@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onomondo Connectors Network Lists API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Network Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve all Network Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/network-whitelists"
+          },
+          "docs": "Retrieve all Network Lists"
+        },
+        {
+          "info": {
+            "name": "Create a Network List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.onomondo.com/network-whitelists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Network List"
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific Network List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/network-whitelists/:network_whitelist_name",
+            "params": [
+              {
+                "name": "network_whitelist_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific Network List"
+        },
+        {
+          "info": {
+            "name": "Update a Network List",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/network-whitelists/:network_whitelist_name",
+            "params": [
+              {
+                "name": "network_whitelist_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Network List"
+        },
+        {
+          "info": {
+            "name": "Delete a Network List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.onomondo.com/network-whitelists/:network_whitelist_name",
+            "params": [
+              {
+                "name": "network_whitelist_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "All SIM mappings must be removed before deletion."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

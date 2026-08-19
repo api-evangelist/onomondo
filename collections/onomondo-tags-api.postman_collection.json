@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "e72f1293-8069-4710-8953-2ed62af0472a",
+      "name": "Tags",
+      "description": {
+        "content": "Search organization tags used to group SIMs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3cc49600-707d-4ba3-8185-d7cdcc69e62a",
+          "name": "Search Tags",
+          "request": {
+            "name": "Search Tags",
+            "description": {
+              "content": "Returns Tags for the organization. Tags are created and updated in the web app, not via the API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tags",
+                "search",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "319f5db5-a360-486b-a8f2-b1143d8aabb7",
+              "name": "A list of Tag objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    "search",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b8ed673c-a2ba-aff5-1b1a-45aaa95e3347\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"5db4e5bb-ed7d-5022-c291-20e904739fdd\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onomondo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6fd8166b-02f8-4654-a2ff-9427456004b0",
+    "name": "Onomondo Connectors Tags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.\n\nContact Support:\n Name: Onomondo Support",
+      "type": "text/plain"
+    }
+  }
+}

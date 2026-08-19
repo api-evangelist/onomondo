@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onomondo Connectors SIMs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SIMs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve information for all SIMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/sims",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-1000)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of objects to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Returns information for all SIMs connected to the organization."
+        },
+        {
+          "info": {
+            "name": "Find SIMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/sims/find",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of SIMs filtered by partial SIM ID, label, or exact ICCID match."
+        },
+        {
+          "info": {
+            "name": "Update multiple SIMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/sims/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates configuration parameters for multiple SIMs (maximum 20 per call)."
+        },
+        {
+          "info": {
+            "name": "Retrieve information for a specific SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/sims/:sim_id",
+            "params": [
+              {
+                "name": "sim_id",
+                "value": "",
+                "type": "path",
+                "description": "The Onomondo SIM identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve information for a specific SIM"
+        },
+        {
+          "info": {
+            "name": "Update a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/sims/:sim_id",
+            "params": [
+              {
+                "name": "sim_id",
+                "value": "",
+                "type": "path",
+                "description": "The Onomondo SIM identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates configurable parameters for the specified SIM."
+        },
+        {
+          "info": {
+            "name": "Add a Tag to a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.onomondo.com/sims/:sim_id/tags/:tag_id",
+            "params": [
+              {
+                "name": "sim_id",
+                "value": "",
+                "type": "path",
+                "description": "The Onomondo SIM identifier."
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The Tag identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "Add a Tag to a SIM"
+        },
+        {
+          "info": {
+            "name": "Remove a Tag from a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.onomondo.com/sims/:sim_id/tags/:tag_id",
+            "params": [
+              {
+                "name": "sim_id",
+                "value": "",
+                "type": "path",
+                "description": "The Onomondo SIM identifier."
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The Tag identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "Remove a Tag from a SIM"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

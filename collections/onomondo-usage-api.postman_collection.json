@@ -1,0 +1,358 @@
+{
+  "item": [
+    {
+      "id": "38eb18ff-e132-474d-b607-193bf268134d",
+      "name": "Usage",
+      "description": {
+        "content": "Retrieve data usage for SIMs and tags.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b39c58e4-7b10-4b08-80d3-146a80a58917",
+          "name": "Retrieve usage for all SIMs",
+          "request": {
+            "name": "Retrieve usage for all SIMs",
+            "description": {
+              "content": "Retrieves all usage associated with all SIMs connected to the account/organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "Maximum number of objects to return (1-1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of objects to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "group",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "502a8846-5b45-4706-a1cf-d403208a76ab",
+              "name": "Usage records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"usage\": [\n    {\n      \"sim_id\": \"string\",\n      \"bytes\": 3863,\n      \"timestamp\": \"2011-03-21T08:42:45.270Z\"\n    },\n    {\n      \"sim_id\": \"string\",\n      \"bytes\": 5851,\n      \"timestamp\": \"1959-06-06T02:40:36.317Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e1ec2b1-1c02-4ec6-a487-2b147c5a7936",
+          "name": "Retrieve usage for a specific SIM",
+          "request": {
+            "name": "Retrieve usage for a specific SIM",
+            "description": {},
+            "url": {
+              "path": [
+                "usage",
+                ":sim_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sim_id",
+                  "description": "(Required) The Onomondo SIM identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07809787-7b6e-4242-8aa6-62f28f294eb2",
+              "name": "Usage records for the SIM.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    ":sim_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sim_id",
+                      "description": "(Required) The Onomondo SIM identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"usage\": [\n    {\n      \"sim_id\": \"string\",\n      \"bytes\": 4671,\n      \"timestamp\": \"1970-04-09T17:58:25.267Z\"\n    },\n    {\n      \"sim_id\": \"string\",\n      \"bytes\": 8352,\n      \"timestamp\": \"1985-04-15T19:25:01.589Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f3280f6-e6e6-4f20-bb26-c81f885fc81b",
+          "name": "Retrieve total usage by Tag",
+          "request": {
+            "name": "Retrieve total usage by Tag",
+            "description": {
+              "content": "Retrieves aggregated usage for all SIMs associated with the given Tag.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage",
+                "tag-total",
+                ":tag_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tag_id",
+                  "description": "(Required) The Tag identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da3964c3-0475-4c53-b4aa-6190ca154a07",
+              "name": "Aggregated usage for the Tag.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    "tag-total",
+                    ":tag_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tag_id",
+                      "description": "(Required) The Tag identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"usage\": [\n    {\n      \"sim_id\": \"string\",\n      \"bytes\": 4671,\n      \"timestamp\": \"1970-04-09T17:58:25.267Z\"\n    },\n    {\n      \"sim_id\": \"string\",\n      \"bytes\": 8352,\n      \"timestamp\": \"1985-04-15T19:25:01.589Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onomondo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "63c4563d-e11e-4e44-a7dc-7a077067f4c8",
+    "name": "Onomondo Connectors Usage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.\n\nContact Support:\n Name: Onomondo Support",
+      "type": "text/plain"
+    }
+  }
+}

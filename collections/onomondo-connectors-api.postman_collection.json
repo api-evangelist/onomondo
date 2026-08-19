@@ -1,0 +1,407 @@
+{
+  "item": [
+    {
+      "id": "5e6a48d6-c1c7-4c4b-9796-60fb12c516e5",
+      "name": "Connectors",
+      "description": {
+        "content": "Manage cloud connectors that forward device traffic.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50c057f4-16a1-4f08-bf9b-afbc2aebdfa0",
+          "name": "Retrieve all Connectors",
+          "request": {
+            "name": "Retrieve all Connectors",
+            "description": {
+              "content": "Returns information for all registered Connectors (Enterprise package).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "969e6dab-59f3-439e-9933-a8050baf2295",
+              "name": "A list of Connector objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"https\",\n    \"tags\": [\n      \"dc54b03a-60c8-32f1-7702-64b3653e3e3e\",\n      \"33916518-6f55-a264-5c90-3eba64911a61\"\n    ],\n    \"passthrough\": [\n      \"string\",\n      \"string\"\n    ],\n    \"options\": {}\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"tls\",\n    \"tags\": [\n      \"ebe2a95e-e9f7-b6f0-52e6-0807fc551d7f\",\n      \"ff7eefb5-34cf-e575-fef7-d0c028945299\"\n    ],\n    \"passthrough\": [\n      \"string\",\n      \"string\"\n    ],\n    \"options\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dcf7ec6-ce59-4615-8cc1-74258af16b7c",
+          "name": "Create a Connector",
+          "request": {
+            "name": "Create a Connector",
+            "description": {},
+            "url": {
+              "path": [
+                "connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"passthrough\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"options\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9ba5f28-0ba8-44f5-90d1-3bf76856d081",
+              "name": "Connector created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"passthrough\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"options\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a88d1f7a-8377-43fc-811b-0174514766fb",
+          "name": "Update a Connector",
+          "request": {
+            "name": "Update a Connector",
+            "description": {},
+            "url": {
+              "path": [
+                "connectors",
+                ":connector_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"passthrough\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"options\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd59de97-a36d-49e8-a62e-0524d41c2bc6",
+              "name": "Connector updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connectors",
+                    ":connector_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"passthrough\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"options\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90e28465-a8e5-4559-8190-fcb64b740499",
+          "name": "Delete a Connector",
+          "request": {
+            "name": "Delete a Connector",
+            "description": {
+              "content": "All mappings to the Connector must be removed first.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connectors",
+                ":connector_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c625c46-444c-4b3f-b558-36ee7e78852f",
+              "name": "Connector deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connectors",
+                    ":connector_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onomondo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "16adda14-a1db-4f46-8242-22e5eb97e8b2",
+    "name": "Onomondo Connectors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.\n\nContact Support:\n Name: Onomondo Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onomondo Connectors API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve all Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/connectors"
+          },
+          "docs": "Returns information for all registered Connectors (Enterprise package)."
+        },
+        {
+          "info": {
+            "name": "Create a Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.onomondo.com/connectors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Connector"
+        },
+        {
+          "info": {
+            "name": "Update a Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.onomondo.com/connectors/:connector_name",
+            "params": [
+              {
+                "name": "connector_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Connector"
+        },
+        {
+          "info": {
+            "name": "Delete a Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.onomondo.com/connectors/:connector_name",
+            "params": [
+              {
+                "name": "connector_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "All mappings to the Connector must be removed first."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,497 @@
+{
+  "item": [
+    {
+      "id": "e46c79e4-483b-4dc7-9c32-1c7bfc5c53d9",
+      "name": "Network Lists",
+      "description": {
+        "content": "Manage network allow-lists (whitelists) of MCC/MNC entries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f18ad2cf-8a82-4982-bd01-a4fe58cbbed2",
+          "name": "Retrieve all Network Lists",
+          "request": {
+            "name": "Retrieve all Network Lists",
+            "description": {},
+            "url": {
+              "path": [
+                "network-whitelists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da80a564-b6d1-44e7-8e3f-05c253679e04",
+              "name": "A list of Network List objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-whitelists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"networks\": [\n      {\n        \"mcc\": \"string\",\n        \"mnc\": \"string\"\n      },\n      {\n        \"mcc\": \"string\",\n        \"mnc\": \"string\"\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"networks\": [\n      {\n        \"mcc\": \"string\",\n        \"mnc\": \"string\"\n      },\n      {\n        \"mcc\": \"string\",\n        \"mnc\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f3581c7-933c-41d6-9a64-dcdf7aea7bb1",
+          "name": "Create a Network List",
+          "request": {
+            "name": "Create a Network List",
+            "description": {},
+            "url": {
+              "path": [
+                "network-whitelists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"networks\": [\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    },\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eeac0b69-2ab1-4f51-aa25-870f54279d36",
+              "name": "Network List created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-whitelists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"networks\": [\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    },\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2bf9d9fa-5890-409e-b26b-53555fc21b6f",
+          "name": "Retrieve a specific Network List",
+          "request": {
+            "name": "Retrieve a specific Network List",
+            "description": {},
+            "url": {
+              "path": [
+                "network-whitelists",
+                ":network_whitelist_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network_whitelist_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e706faae-90de-4187-9287-bb63eca44380",
+              "name": "A Network List object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-whitelists",
+                    ":network_whitelist_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network_whitelist_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"networks\": [\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    },\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f73891cc-49ec-4a0f-9908-37df16cf0eb4",
+          "name": "Update a Network List",
+          "request": {
+            "name": "Update a Network List",
+            "description": {},
+            "url": {
+              "path": [
+                "network-whitelists",
+                ":network_whitelist_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network_whitelist_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"networks\": [\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    },\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8cfb57d-1600-410d-8d64-066acb895d61",
+              "name": "Network List updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-whitelists",
+                    ":network_whitelist_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network_whitelist_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"networks\": [\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    },\n    {\n      \"mcc\": \"<string>\",\n      \"mnc\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "683dcfa2-f4f3-4894-b1f3-3c7d4e0fb314",
+          "name": "Delete a Network List",
+          "request": {
+            "name": "Delete a Network List",
+            "description": {
+              "content": "All SIM mappings must be removed before deletion.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-whitelists",
+                ":network_whitelist_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network_whitelist_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9613b0c3-834a-4a1a-8750-23e1c8af0cdd",
+              "name": "Network List deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-whitelists",
+                    ":network_whitelist_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network_whitelist_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onomondo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8e467d8a-967a-4e2b-8d52-3607642701d1",
+    "name": "Onomondo Connectors Network Lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.\n\nContact Support:\n Name: Onomondo Support",
+      "type": "text/plain"
+    }
+  }
+}

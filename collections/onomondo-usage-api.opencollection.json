@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onomondo Connectors Usage API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve usage for all SIMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/usage",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-1000)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of objects to skip for pagination."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves all usage associated with all SIMs connected to the account/organization."
+        },
+        {
+          "info": {
+            "name": "Retrieve usage for a specific SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/usage/:sim_id",
+            "params": [
+              {
+                "name": "sim_id",
+                "value": "",
+                "type": "path",
+                "description": "The Onomondo SIM identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve usage for a specific SIM"
+        },
+        {
+          "info": {
+            "name": "Retrieve total usage by Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/usage/tag-total/:tag_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The Tag identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "Retrieves aggregated usage for all SIMs associated with the given Tag."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

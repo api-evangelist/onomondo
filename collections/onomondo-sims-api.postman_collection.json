@@ -1,0 +1,794 @@
+{
+  "item": [
+    {
+      "id": "4a5ea9ba-9fb8-4f2e-99d5-00114508acc0",
+      "name": "SIMs",
+      "description": {
+        "content": "Manage and inspect SIMs in your fleet.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0f6930d-c8a0-4fad-ad08-3c7e7a8c940e",
+          "name": "Retrieve information for all SIMs",
+          "request": {
+            "name": "Retrieve information for all SIMs",
+            "description": {
+              "content": "Returns information for all SIMs connected to the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "Maximum number of objects to return (1-1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of objects to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61a0f6aa-6343-4c0e-a0fe-533234d323f2",
+              "name": "A list of SIM objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"iccid\": \"string\",\n    \"label\": \"string\",\n    \"activated\": false,\n    \"network_whitelist\": \"string\",\n    \"imei_lock\": \"string\",\n    \"connector\": \"string\",\n    \"data_limit\": {\n      \"total\": 9037.640648656994,\n      \"type\": \"string\",\n      \"alert_threshold\": 915.7927945354016\n    },\n    \"technologies\": {\n      \"sms\": true,\n      \"2g_3g\": false,\n      \"4g\": false\n    },\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"location\": {}\n  },\n  {\n    \"id\": \"string\",\n    \"iccid\": \"string\",\n    \"label\": \"string\",\n    \"activated\": true,\n    \"network_whitelist\": \"string\",\n    \"imei_lock\": \"string\",\n    \"connector\": \"string\",\n    \"data_limit\": {\n      \"total\": 5557.966514938812,\n      \"type\": \"string\",\n      \"alert_threshold\": 7125.10759410878\n    },\n    \"technologies\": {\n      \"sms\": false,\n      \"2g_3g\": true,\n      \"4g\": false\n    },\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"location\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6159e95-9543-4e91-a002-a553f139aced",
+          "name": "Find SIMs",
+          "request": {
+            "name": "Find SIMs",
+            "description": {
+              "content": "Retrieves a list of SIMs filtered by partial SIM ID, label, or exact ICCID match.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sims",
+                "find"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "196fc572-bb35-42d2-911d-786c4e1ee76d",
+              "name": "A list of matching SIM objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sims",
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"iccid\": \"string\",\n    \"label\": \"string\",\n    \"activated\": false,\n    \"network_whitelist\": \"string\",\n    \"imei_lock\": \"string\",\n    \"connector\": \"string\",\n    \"data_limit\": {\n      \"total\": 5179.313423749532,\n      \"type\": \"string\",\n      \"alert_threshold\": 8273.604920054247\n    },\n    \"technologies\": {\n      \"sms\": false,\n      \"2g_3g\": false,\n      \"4g\": true\n    },\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"location\": {}\n  },\n  {\n    \"id\": \"string\",\n    \"iccid\": \"string\",\n    \"label\": \"string\",\n    \"activated\": true,\n    \"network_whitelist\": \"string\",\n    \"imei_lock\": \"string\",\n    \"connector\": \"string\",\n    \"data_limit\": {\n      \"total\": 7717.442733591126,\n      \"type\": \"string\",\n      \"alert_threshold\": 132.14130731844298\n    },\n    \"technologies\": {\n      \"sms\": false,\n      \"2g_3g\": true,\n      \"4g\": false\n    },\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"location\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8447b105-1437-4b2e-84ab-4b20148c9a84",
+          "name": "Update multiple SIMs",
+          "request": {
+            "name": "Update multiple SIMs",
+            "description": {
+              "content": "Updates configuration parameters for multiple SIMs (maximum 20 per call).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sims",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"label\": \"<string>\",\n    \"network_whitelist\": \"<string>\",\n    \"imei_lock\": \"<string>\",\n    \"connector\": \"<string>\",\n    \"activated\": \"<boolean>\",\n    \"data_limit\": {\n      \"total\": \"<number>\",\n      \"type\": \"<string>\",\n      \"alert_threshold\": \"<number>\"\n    },\n    \"technologies\": {\n      \"sms\": \"<boolean>\",\n      \"2g_3g\": \"<boolean>\",\n      \"4g\": \"<boolean>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"label\": \"<string>\",\n    \"network_whitelist\": \"<string>\",\n    \"imei_lock\": \"<string>\",\n    \"connector\": \"<string>\",\n    \"activated\": \"<boolean>\",\n    \"data_limit\": {\n      \"total\": \"<number>\",\n      \"type\": \"<string>\",\n      \"alert_threshold\": \"<number>\"\n    },\n    \"technologies\": {\n      \"sms\": \"<boolean>\",\n      \"2g_3g\": \"<boolean>\",\n      \"4g\": \"<boolean>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d4f4dc6f-9405-454a-a68d-c832b99db52e",
+              "name": "SIMs updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sims",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"label\": \"<string>\",\n    \"network_whitelist\": \"<string>\",\n    \"imei_lock\": \"<string>\",\n    \"connector\": \"<string>\",\n    \"activated\": \"<boolean>\",\n    \"data_limit\": {\n      \"total\": \"<number>\",\n      \"type\": \"<string>\",\n      \"alert_threshold\": \"<number>\"\n    },\n    \"technologies\": {\n      \"sms\": \"<boolean>\",\n      \"2g_3g\": \"<boolean>\",\n      \"4g\": \"<boolean>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"label\": \"<string>\",\n    \"network_whitelist\": \"<string>\",\n    \"imei_lock\": \"<string>\",\n    \"connector\": \"<string>\",\n    \"activated\": \"<boolean>\",\n    \"data_limit\": {\n      \"total\": \"<number>\",\n      \"type\": \"<string>\",\n      \"alert_threshold\": \"<number>\"\n    },\n    \"technologies\": {\n      \"sms\": \"<boolean>\",\n      \"2g_3g\": \"<boolean>\",\n      \"4g\": \"<boolean>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61f2e289-31b8-4cd8-9697-5d2012fc2e6d",
+          "name": "Retrieve information for a specific SIM",
+          "request": {
+            "name": "Retrieve information for a specific SIM",
+            "description": {},
+            "url": {
+              "path": [
+                "sims",
+                ":sim_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sim_id",
+                  "description": "(Required) The Onomondo SIM identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af3e47f2-e997-45b8-abbb-8e0c2105eb4f",
+              "name": "A SIM object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sims",
+                    ":sim_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sim_id",
+                      "description": "(Required) The Onomondo SIM identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"iccid\": \"string\",\n  \"label\": \"string\",\n  \"activated\": false,\n  \"network_whitelist\": \"string\",\n  \"imei_lock\": \"string\",\n  \"connector\": \"string\",\n  \"data_limit\": {\n    \"total\": \"<number>\",\n    \"type\": \"<string>\",\n    \"alert_threshold\": \"<number>\"\n  },\n  \"technologies\": {\n    \"sms\": \"<boolean>\",\n    \"2g_3g\": \"<boolean>\",\n    \"4g\": \"<boolean>\"\n  },\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"location\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d641d482-41d9-41a7-a457-60cf9e09a7c0",
+              "name": "SIM not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sims",
+                    ":sim_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sim_id",
+                      "description": "(Required) The Onomondo SIM identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de0b663a-4668-49da-8144-010d8317159f",
+          "name": "Update a SIM",
+          "request": {
+            "name": "Update a SIM",
+            "description": {
+              "content": "Updates configurable parameters for the specified SIM.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sims",
+                ":sim_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sim_id",
+                  "description": "(Required) The Onomondo SIM identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label\": \"<string>\",\n  \"network_whitelist\": \"<string>\",\n  \"imei_lock\": \"<string>\",\n  \"connector\": \"<string>\",\n  \"activated\": \"<boolean>\",\n  \"data_limit\": {\n    \"total\": \"<number>\",\n    \"type\": \"<string>\",\n    \"alert_threshold\": \"<number>\"\n  },\n  \"technologies\": {\n    \"sms\": \"<boolean>\",\n    \"2g_3g\": \"<boolean>\",\n    \"4g\": \"<boolean>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a87861a-2ee3-4ef2-994a-8002906c0cb7",
+              "name": "SIM updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sims",
+                    ":sim_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sim_id",
+                      "description": "(Required) The Onomondo SIM identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"<string>\",\n  \"network_whitelist\": \"<string>\",\n  \"imei_lock\": \"<string>\",\n  \"connector\": \"<string>\",\n  \"activated\": \"<boolean>\",\n  \"data_limit\": {\n    \"total\": \"<number>\",\n    \"type\": \"<string>\",\n    \"alert_threshold\": \"<number>\"\n  },\n  \"technologies\": {\n    \"sms\": \"<boolean>\",\n    \"2g_3g\": \"<boolean>\",\n    \"4g\": \"<boolean>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"iccid\": \"string\",\n  \"label\": \"string\",\n  \"activated\": false,\n  \"network_whitelist\": \"string\",\n  \"imei_lock\": \"string\",\n  \"connector\": \"string\",\n  \"data_limit\": {\n    \"total\": \"<number>\",\n    \"type\": \"<string>\",\n    \"alert_threshold\": \"<number>\"\n  },\n  \"technologies\": {\n    \"sms\": \"<boolean>\",\n    \"2g_3g\": \"<boolean>\",\n    \"4g\": \"<boolean>\"\n  },\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"location\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c722d58-0b50-42fa-ae94-c591eb34334e",
+          "name": "Add a Tag to a SIM",
+          "request": {
+            "name": "Add a Tag to a SIM",
+            "description": {},
+            "url": {
+              "path": [
+                "sims",
+                ":sim_id",
+                "tags",
+                ":tag_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sim_id",
+                  "description": "(Required) The Onomondo SIM identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tag_id",
+                  "description": "(Required) The Tag identifier (UUID)."
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a056b52-cbd7-4e2e-8fe9-01ec307bc08f",
+              "name": "Tag added to SIM.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sims",
+                    ":sim_id",
+                    "tags",
+                    ":tag_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sim_id",
+                      "description": "(Required) The Onomondo SIM identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tag_id",
+                      "description": "(Required) The Tag identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93f7748d-b3df-43ca-be65-c87e5c677147",
+          "name": "Remove a Tag from a SIM",
+          "request": {
+            "name": "Remove a Tag from a SIM",
+            "description": {},
+            "url": {
+              "path": [
+                "sims",
+                ":sim_id",
+                "tags",
+                ":tag_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sim_id",
+                  "description": "(Required) The Onomondo SIM identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tag_id",
+                  "description": "(Required) The Tag identifier (UUID)."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2385527d-dc94-4de1-a53c-a2c020d01fba",
+              "name": "Tag removed from SIM.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sims",
+                    ":sim_id",
+                    "tags",
+                    ":tag_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sim_id",
+                      "description": "(Required) The Onomondo SIM identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tag_id",
+                      "description": "(Required) The Tag identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onomondo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a7e89107-ddc9-49aa-80ec-4d80b2957a37",
+    "name": "Onomondo Connectors SIMs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.\n\nContact Support:\n Name: Onomondo Support",
+      "type": "text/plain"
+    }
+  }
+}

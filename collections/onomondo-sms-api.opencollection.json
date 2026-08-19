@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onomondo Connectors SMS API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve SMS usage for all SIMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/sms/usage/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-1000)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of objects to skip for pagination."
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve SMS usage for all SIMs"
+        },
+        {
+          "info": {
+            "name": "Retrieve SMS usage for a specific SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onomondo.com/sms/usage/:sim_id",
+            "params": [
+              {
+                "name": "sim_id",
+                "value": "",
+                "type": "path",
+                "description": "The Onomondo SIM identifier."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-1000)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of objects to skip for pagination."
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve SMS usage for a specific SIM"
+        },
+        {
+          "info": {
+            "name": "Send SMS to a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.onomondo.com/sms/:sim_id",
+            "params": [
+              {
+                "name": "sim_id",
+                "value": "",
+                "type": "path",
+                "description": "The Onomondo SIM identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send SMS to a device"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
