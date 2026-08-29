@@ -7,6 +7,18 @@ description: Onomondo is a global IoT cellular-connectivity platform that connec
   Onomondo API (https://api.onomondo.com) provides programmatic management of SIMs,
   data usage, network lists, SMS, webhooks, connectors, and tags with Bearer API-key
   authentication.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
