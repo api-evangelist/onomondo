@@ -230,6 +230,9 @@ apis:
   - type: Documentation
     url: https://docs.onomondo.com/readme/connectors
 common:
+- type: CapabilityMap
+  url: capabilities/onomondo-capability-edges.yml
+  name: Onomondo Business Capability Map
 - type: AgenticAccess
   url: agentic-access/onomondo-agentic-access.yml
 - type: DomainSecurity
