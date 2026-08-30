@@ -101,7 +101,7 @@ apis:
   humanURL: https://docs.onomondo.com/readme/sims
   baseURL: https://api.onomondo.com
   tags:
-  - SIM
+  - SIMs
   tags_raw:
   - SIMs
   properties:
