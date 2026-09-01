@@ -75,6 +75,8 @@ apis:
   humanURL: https://docs.onomondo.com/readme/sims
   baseURL: https://api.onomondo.com
   tags:
+  - Network lists
+  tags_raw:
   - Network Lists
   properties:
   - type: OpenAPI
@@ -101,7 +103,7 @@ apis:
   humanURL: https://docs.onomondo.com/readme/sims
   baseURL: https://api.onomondo.com
   tags:
-  - SIMs
+  - SIM
   tags_raw:
   - SIMs
   properties:
