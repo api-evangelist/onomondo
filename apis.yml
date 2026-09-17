@@ -97,34 +97,6 @@ apis:
     url: https://docs.onomondo.com/webhooks-reference
   - type: Documentation
     url: https://docs.onomondo.com/readme/connectors
-- aid: onomondo:onomondo-sims-api
-  name: Onomondo SIMs API
-  description: Manage and inspect SIMs in your fleet.
-  humanURL: https://docs.onomondo.com/readme/sims
-  baseURL: https://api.onomondo.com
-  tags:
-  - SIM
-  tags_raw:
-  - SIMs
-  properties:
-  - type: OpenAPI
-    url: openapi/onomondo-sims-api-openapi.yml
-  - type: Documentation
-    url: https://docs.onomondo.com/readme/sims
-  - type: APIReference
-    url: https://docs.onomondo.com/
-  - type: Documentation
-    url: https://docs.onomondo.com/readme/usage
-  - type: Documentation
-    url: https://docs.onomondo.com/traffic-monitor-cli
-  - type: Documentation
-    url: https://docs.onomondo.com/readme/network-whitelists
-  - type: Documentation
-    url: https://docs.onomondo.com/readme/webhooks
-  - type: Documentation
-    url: https://docs.onomondo.com/webhooks-reference
-  - type: Documentation
-    url: https://docs.onomondo.com/readme/connectors
 - aid: onomondo:onomondo-sms-api
   name: Onomondo SMS API
   description: Send SMS to devices and retrieve SMS usage.
@@ -215,6 +187,32 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/onomondo-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/sims
+  - type: APIReference
+    url: https://docs.onomondo.com/
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/usage
+  - type: Documentation
+    url: https://docs.onomondo.com/traffic-monitor-cli
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/network-whitelists
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/webhooks
+  - type: Documentation
+    url: https://docs.onomondo.com/webhooks-reference
+  - type: Documentation
+    url: https://docs.onomondo.com/readme/connectors
+- aid: onomondo:onomondo-sims-api
+  name: Onomondo SI Ms API
+  description: Manage and inspect SIMs in your fleet.
+  humanURL: https://docs.onomondo.com/readme/sims
+  baseURL: https://api.onomondo.com
+  tags:
+  - SIMs
+  properties:
+  - type: OpenAPI
+    url: openapi/onomondo-sims-api-openapi.yml
   - type: Documentation
     url: https://docs.onomondo.com/readme/sims
   - type: APIReference
