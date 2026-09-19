@@ -209,6 +209,8 @@ apis:
   humanURL: https://docs.onomondo.com/readme/sims
   baseURL: https://api.onomondo.com
   tags:
+  - SIM
+  tags_raw:
   - SIMs
   properties:
   - type: OpenAPI
