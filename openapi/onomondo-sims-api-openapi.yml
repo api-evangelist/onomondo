@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Onomondo Connectors SIMs API
+  title: Onomondo SI Ms API
   description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.
   termsOfService: https://onomondo.com/legal/
   contact:
@@ -134,6 +134,27 @@ paths:
           description: Tag removed from SIM.
 components:
   parameters:
+    SimId:
+      name: sim_id
+      in: path
+      required: true
+      description: The Onomondo SIM identifier.
+      schema:
+        type: string
+    TagId:
+      name: tag_id
+      in: path
+      required: true
+      description: The Tag identifier (UUID).
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      description: Number of objects to skip for pagination.
+      schema:
+        type: integer
+        default: 0
     Limit:
       name: limit
       in: query
@@ -143,88 +164,7 @@ components:
         minimum: 1
         maximum: 1000
         default: 1000
-    Offset:
-      name: offset
-      in: query
-      description: Number of objects to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    TagId:
-      name: tag_id
-      in: path
-      required: true
-      description: The Tag identifier (UUID).
-      schema:
-        type: string
-    SimId:
-      name: sim_id
-      in: path
-      required: true
-      description: The Onomondo SIM identifier.
-      schema:
-        type: string
   schemas:
-    SimUpdate:
-      type: object
-      properties:
-        label:
-          type: string
-          nullable: true
-        network_whitelist:
-          type: string
-          nullable: true
-        imei_lock:
-          type: string
-          nullable: true
-        connector:
-          type: string
-          nullable: true
-        activated:
-          type: boolean
-        data_limit:
-          $ref: '#/components/schemas/DataLimit'
-        technologies:
-          $ref: '#/components/schemas/Technologies'
-        tags:
-          type: array
-          items:
-            type: string
-    Sim:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The Onomondo SIM identifier.
-        iccid:
-          type: string
-          description: Integrated Circuit Card Identifier.
-        label:
-          type: string
-          nullable: true
-        activated:
-          type: boolean
-        network_whitelist:
-          type: string
-          nullable: true
-        imei_lock:
-          type: string
-          nullable: true
-        connector:
-          type: string
-          nullable: true
-        data_limit:
-          $ref: '#/components/schemas/DataLimit'
-        technologies:
-          $ref: '#/components/schemas/Technologies'
-        tags:
-          type: array
-          items:
-            type: string
-        location:
-          type: object
-          nullable: true
-          description: Last known network location of the SIM (read-only).
     Technologies:
       type: object
       properties:
@@ -246,6 +186,75 @@ components:
         alert_threshold:
           type: number
           description: Threshold at which a cost/usage alert is triggered.
+    Sim:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Onomondo SIM identifier.
+        iccid:
+          type: string
+          description: Integrated Circuit Card Identifier.
+        label:
+          type:
+          - string
+          - 'null'
+        activated:
+          type: boolean
+        network_whitelist:
+          type:
+          - string
+          - 'null'
+        imei_lock:
+          type:
+          - string
+          - 'null'
+        connector:
+          type:
+          - string
+          - 'null'
+        data_limit:
+          $ref: '#/components/schemas/DataLimit'
+        technologies:
+          $ref: '#/components/schemas/Technologies'
+        tags:
+          type: array
+          items:
+            type: string
+        location:
+          type:
+          - object
+          - 'null'
+          description: Last known network location of the SIM (read-only).
+    SimUpdate:
+      type: object
+      properties:
+        label:
+          type:
+          - string
+          - 'null'
+        network_whitelist:
+          type:
+          - string
+          - 'null'
+        imei_lock:
+          type:
+          - string
+          - 'null'
+        connector:
+          type:
+          - string
+          - 'null'
+        activated:
+          type: boolean
+        data_limit:
+          $ref: '#/components/schemas/DataLimit'
+        technologies:
+          $ref: '#/components/schemas/Technologies'
+        tags:
+          type: array
+          items:
+            type: string
   securitySchemes:
     apiKey:
       type: apiKey

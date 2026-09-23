@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Onomondo Connectors API
   description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.

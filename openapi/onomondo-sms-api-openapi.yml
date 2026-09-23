@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Onomondo Connectors SMS API
+  title: Onomondo SMS API
   description: HTTP RESTful API for the Onomondo IoT cellular-connectivity platform. Resource-oriented URLs with standard HTTP verbs, JSON request/response bodies, and Bearer API-key authentication. Served exclusively over TLS (HTTPS). Use it to manage SIMs, usage, network lists, SMS, webhooks, connectors, and tags across a global IoT fleet.
   termsOfService: https://onomondo.com/legal/
   contact:
@@ -87,6 +87,13 @@ paths:
           description: SMS accepted for delivery.
 components:
   parameters:
+    SimId:
+      name: sim_id
+      in: path
+      required: true
+      description: The Onomondo SIM identifier.
+      schema:
+        type: string
     Limit:
       name: limit
       in: query
@@ -96,13 +103,6 @@ components:
         minimum: 1
         maximum: 1000
         default: 1000
-    SimId:
-      name: sim_id
-      in: path
-      required: true
-      description: The Onomondo SIM identifier.
-      schema:
-        type: string
     Offset:
       name: offset
       in: query
