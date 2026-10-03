@@ -83,6 +83,13 @@ components:
         minimum: 1
         maximum: 1000
         default: 1000
+    Offset:
+      name: offset
+      in: query
+      description: Number of objects to skip for pagination.
+      schema:
+        type: integer
+        default: 0
     SimId:
       name: sim_id
       in: path
@@ -97,13 +104,6 @@ components:
       description: The Tag identifier (UUID).
       schema:
         type: string
-    Offset:
-      name: offset
-      in: query
-      description: Number of objects to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   schemas:
     Usage:
       type: object

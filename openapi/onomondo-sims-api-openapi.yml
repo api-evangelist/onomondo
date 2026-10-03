@@ -143,6 +143,13 @@ components:
         minimum: 1
         maximum: 1000
         default: 1000
+    Offset:
+      name: offset
+      in: query
+      description: Number of objects to skip for pagination.
+      schema:
+        type: integer
+        default: 0
     SimId:
       name: sim_id
       in: path
@@ -157,23 +164,7 @@ components:
       description: The Tag identifier (UUID).
       schema:
         type: string
-    Offset:
-      name: offset
-      in: query
-      description: Number of objects to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   schemas:
-    Technologies:
-      type: object
-      properties:
-        sms:
-          type: boolean
-        2g_3g:
-          type: boolean
-        4g:
-          type: boolean
     Sim:
       type: object
       properties:
@@ -226,6 +217,15 @@ components:
         alert_threshold:
           type: number
           description: Threshold at which a cost/usage alert is triggered.
+    Technologies:
+      type: object
+      properties:
+        sms:
+          type: boolean
+        2g_3g:
+          type: boolean
+        4g:
+          type: boolean
     SimUpdate:
       type: object
       properties:
