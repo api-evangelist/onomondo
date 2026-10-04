@@ -74,6 +74,20 @@ paths:
                 $ref: '#/components/schemas/Usage'
 components:
   parameters:
+    SimId:
+      name: sim_id
+      in: path
+      required: true
+      description: The Onomondo SIM identifier.
+      schema:
+        type: string
+    TagId:
+      name: tag_id
+      in: path
+      required: true
+      description: The Tag identifier (UUID).
+      schema:
+        type: string
     Limit:
       name: limit
       in: query
@@ -90,20 +104,6 @@ components:
       schema:
         type: integer
         default: 0
-    SimId:
-      name: sim_id
-      in: path
-      required: true
-      description: The Onomondo SIM identifier.
-      schema:
-        type: string
-    TagId:
-      name: tag_id
-      in: path
-      required: true
-      description: The Tag identifier (UUID).
-      schema:
-        type: string
   schemas:
     Usage:
       type: object
