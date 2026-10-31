@@ -1,4 +1,4 @@
-# Onomondo (onomondo)
+# Onomondo
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,137 +66,128 @@
 
 Onomondo is a global IoT cellular-connectivity platform that connects devices to 680+ networks across 180+ countries using a single core network. The Onomondo API (https://api.onomondo.com) provides programmatic management of SIMs, data usage, network lists, SMS, webhooks, connectors, and tags with Bearer API-key authentication.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/onomondo/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/onomondo/refs/heads/main/apis.yml)
+**Areas:** IoT · Connectivity · Cellular · SIM · Telecommunications
 
-## Tags
+## Onomondo on APIs.io
 
-- IoT
-- Connectivity
-- Cellular
-- SIM
-- Telecom
+Everything profiled for Onomondo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/onomondo/](https://apis.io/providers/onomondo/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Onomondo Connectors API](https://apis.io/apis/onomondo/onomondo-connectors-api/) — Manage cloud connectors that forward device traffic.
+- [Onomondo Network Lists API](https://apis.io/apis/onomondo/onomondo-network-lists-api/) — Manage network allow-lists (whitelists) of MCC/MNC entries.
+- [Onomondo SMS API](https://apis.io/apis/onomondo/onomondo-sms-api/) — Send SMS to devices and retrieve SMS usage.
+- [Onomondo Tags API](https://apis.io/apis/onomondo/onomondo-tags-api/) — Search organization tags used to group SIMs.
+- [Onomondo Usage API](https://apis.io/apis/onomondo/onomondo-usage-api/) — Retrieve data usage for SIMs and tags.
+- [Onomondo Webhooks API](https://apis.io/apis/onomondo/onomondo-webhooks-api/) — Subscribe to SIM events delivered as HTTP POST callbacks.
+- [Onomondo SI Ms API](https://apis.io/apis/onomondo/onomondo-sims-api/) — Manage and inspect SIMs in your fleet.
 
-## APIs
+### Published properties
 
-### Onomondo SIMs API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-List, find, retrieve, and update SIMs across an IoT fleet, including activation state, data limits, network lists, IMEI lock, supported technologies, and tag assignment (single and bulk).
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.onomondo.com/readme/sims](https://docs.onomondo.com/readme/sims)
-- **Base URL:** `https://api.onomondo.com`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Onomondo Agentic Access](https://apis.io/agentic-access/onomondo/onomondo-agentic-access/)
 
-- SIM
-- IoT
-- Fleet Management
+#### Collections (8)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.onomondo.com/readme/sims)
-- [API Reference](https://docs.onomondo.com/)
-- [OpenAPI](openapi/onomondo-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/onomondo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/onomondo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Onomondo API](https://apis.io/collections/onomondo/open-onomondo/)
+- [Onomondo Connectors API](https://apis.io/collections/onomondo/open-onomondo-connectors-api/)
+- [Onomondo Connectors Network Lists API](https://apis.io/collections/onomondo/open-onomondo-network-lists-api/)
+- [Onomondo Connectors SIMs API](https://apis.io/collections/onomondo/open-onomondo-sims-api/)
+- [Onomondo Connectors SMS API](https://apis.io/collections/onomondo/open-onomondo-sms-api/)
+- [Onomondo Connectors Tags API](https://apis.io/collections/onomondo/open-onomondo-tags-api/)
+- [Onomondo Connectors Usage API](https://apis.io/collections/onomondo/open-onomondo-usage-api/)
+- [Onomondo Connectors Webhooks API](https://apis.io/collections/onomondo/open-onomondo-webhooks-api/)
 
-### Onomondo Usage & Traffic API
+#### Security (2)
 
-Retrieve data usage for all SIMs, an individual SIM, or aggregated by Tag, plus SMS usage records. Complements the Traffic Monitor tooling for real-time packet-level traffic inspection.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.onomondo.com/readme/usage](https://docs.onomondo.com/readme/usage)
-- **Base URL:** `https://api.onomondo.com`
+- [Onomondo Authentication](https://apis.io/security/onomondo/onomondo-authentication/)
+- [Onomondo Domain Security](https://apis.io/security/onomondo/onomondo-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Usage
-- Traffic
-- Metering
+Published plans, tiers and prices.
 
-#### Properties
+- [Onomondo Plans Pricing](https://apis.io/plans/onomondo/onomondo-plans-pricing/)
 
-- [Documentation](https://docs.onomondo.com/readme/usage)
-- [Documentation](https://docs.onomondo.com/traffic-monitor-cli)
-- [OpenAPI](openapi/onomondo-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/onomondo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/onomondo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Onomondo Networks API
+Published request limits.
 
-Create, retrieve, update, and delete Network Lists - named allow-lists of MCC/MNC network entries with associated Tags that control which mobile networks SIMs may attach to.
+- [Onomondo Rate Limits](https://apis.io/rate-limits/onomondo/onomondo-rate-limits/)
 
-- **Human URL:** [https://docs.onomondo.com/readme/network-whitelists](https://docs.onomondo.com/readme/network-whitelists)
-- **Base URL:** `https://api.onomondo.com`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Networks
-- MCC
-- MNC
+- [Onomondo Finops](https://apis.io/finops/onomondo/onomondo-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.onomondo.com/readme/network-whitelists)
-- [OpenAPI](openapi/onomondo-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/onomondo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/onomondo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Onomondo Webhooks & Notifications API
-
-Manage webhooks that deliver near-real-time SIM events (usage, network registration/deregistration/authentication, SMS, location, and cost-alert) as HTTP POST callbacks, with Tag-based filtering and event-type exclusion.
-
-- **Human URL:** [https://docs.onomondo.com/readme/webhooks](https://docs.onomondo.com/readme/webhooks)
-- **Base URL:** `https://api.onomondo.com`
-
-#### Tags
-
-- Webhooks
-- Events
-- Notifications
-
-#### Properties
-
-- [Documentation](https://docs.onomondo.com/readme/webhooks)
-- [Documentation](https://docs.onomondo.com/webhooks-reference)
-- [OpenAPI](openapi/onomondo-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/onomondo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/onomondo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Onomondo Apps & Connectors API
-
-Create, update, and delete Connectors (Apps) that forward device traffic to cloud destinations such as HTTPS, TLS, Microsoft Azure IoT, and AWS IoT Core, plus search organization Tags used to group SIMs.
-
-- **Human URL:** [https://docs.onomondo.com/readme/connectors](https://docs.onomondo.com/readme/connectors)
-- **Base URL:** `https://api.onomondo.com`
-
-#### Tags
-
-- Connectors
-- Integrations
-- Cloud
-
-#### Properties
-
-- [Documentation](https://docs.onomondo.com/readme/connectors)
-- [OpenAPI](openapi/onomondo-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/onomondo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/onomondo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/onomondo)
-- [LinkedIn](https://www.linkedin.com/company/onomondo)
 - [Website](https://onomondo.com/)
 - [Documentation](https://docs.onomondo.com/)
-- [Plans](plans/onomondo-plans-pricing.yml)
-- [Rate Limits](rate-limits/onomondo-rate-limits.yml)
-- [Fin Ops](finops/onomondo-finops.yml)
+- [Blog](https://onomondo.com/blog/feed/)
+- [GitHub](https://github.com/onomondo)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 48.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.0** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/onomondo/](https://apis.io/providers/onomondo/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Onomondo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/onomondo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
